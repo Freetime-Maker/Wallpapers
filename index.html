@@ -1,158 +1,144 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="description" content="The Official Shop from Freetime Maker.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freetime Maker Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1XFVB58V9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-F1XFVB58V9');
+</script>
+</head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#" onclick="showProducts()">DigitalShop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="showProducts()">Alle Produkte</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown">
-                            Kategorien
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="filterByCategory('all')">Alle</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterByCategory('Wallpapers')">Wallpapers</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterByCategory('Icons')">Icons</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterByCategory('Templates')">Templates</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex me-3" onsubmit="searchProducts(event)">
-                    <input class="form-control me-2" type="search" id="search-input" placeholder="Produkte suchen..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Suchen</button>
-                </form>
-                <div class="d-flex">
-                    <button class="btn btn-outline-light me-2" onclick="showCart()">
-                        <i class="fas fa-shopping-cart"></i> Warenkorb (<span id="cart-count">0</span>)
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <header>
+    <h1>Freetime Maker Shop</h1>
+  </header>
 
-    <div class="container mt-4">
-        <section id="products">
-            <h2 class="mb-4">Produkte</h2>
-            <div class="row" id="product-list">
-                <!-- Produkte werden hier dynamisch eingefügt -->
-            </div>
-        </section>
+  <main>
+    <section id="products">
+      
+      <div class="product">
+        <img src="images/logo.png" alt="Logo" width="150">
+        <h3>Information</h3>
+        <p>For every Product you buy for example: 2D Platformer you will need to leave you E-Mail Address for the code from the product after i saw the purchase i will send you the code for the product.</p>
+        <p>For everyone that pays with Coinbase there will be an E-Mail coming with the redirect Link.</p>
+        <p>I have looked for cash payment but it seems its not possible to do it so if you find one available in switzerland and for teenagers please make a ticket on my Discord Server.</p>
+        <p>I will send a new E-Mail when a new Update is out.</p>
+      </div>
 
-        <section id="cart" style="display: none;">
-            <h2>Warenkorb</h2>
-            <div id="cart-items" class="mb-3"></div>
-            <div class="d-flex justify-content-between align-items-center">
-                <h4>Gesamt: <span id="total-price">0.00</span> EUR</h4>
-                <button class="btn btn-primary" id="checkout-btn">Zur Kasse</button>
-            </div>
-        </section>
+      <div class="product">
+        <img src="images/icon.png" alt="Freetime Maker Shop Logo" width="150">
+        <h3>Make sure to check out the Gumroad Shop too</h3>
+        <p>The Gumroad Shop is in early Development but make sure to check it out too</p>
+        <a href="https://freetimemaker.gumroad.com/" target="_blank">
+          <button>Visit the Gumroad Shop</button>
+        </a>
+      </div>
 
-        <section id="checkout" style="display: none;">
-            <h2>Checkout</h2>
-            <form class="mb-4">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>Rechnungsadresse</h4>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Vorname" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Nachname" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="E-Mail" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Adresse" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Stadt" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="PLZ" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4>Zahlung & Download</h4>
-                        <div class="mb-3">
-                            <label>Währung:</label>
-                            <select class="form-select" id="currency-select">
-                                <option value="EUR">EUR</option>
-                                <option value="USD">USD</option>
-                                <option value="GBP">GBP</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <p>Gesamt: <strong><span id="converted-total">0.00</span> <span id="selected-currency-checkout3">EUR</span></strong></p>
-                            <p class="text-success">Nach Zahlung erhalten Sie sofort einen Download-Link per E-Mail.</p>
-                        </div>
-                        <div id="payment-options">
-                            <h5>Zahlungsoptionen</h5>
-                            <div class="d-grid gap-2">
-                                <button type="button" class="btn btn-outline-primary payment-btn" data-provider="PayPal">Bezahlen mit PayPal</button>
-                                <button type="button" class="btn btn-outline-primary payment-btn" data-provider="Stripe">Bezahlen mit Stripe</button>
-                                <button type="button" class="btn btn-outline-primary payment-btn" data-provider="Kreditkarte">Bezahlen mit Kreditkarte</button>
-                                <button type="button" class="btn btn-outline-primary payment-btn" data-provider="Sofortüberweisung">Sofortüberweisung</button>
-                                <button type="button" class="btn btn-outline-primary payment-btn" data-provider="Klarna">Bezahlen mit Klarna</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <button type="button" class="btn btn-secondary me-2" id="back-to-cart">Zurück zum Warenkorb</button>
-                    <button type="submit" class="btn btn-success">Bestellung aufgeben</button>
-                </div>
-            </form>
-        </section>
+      <div class="product">
+        <img src="images/icon.png" alt="Freetime Maker Shop Icon" width="150">
+        <h3>Visit the Official Freetime Maker Shop App for Android</h3>
+        <p>The Official Android App is still in Development but you can see whats New</p>
+        <a href="https://github.com/FreetimeMaker/Freetime-Maker-Shop-Android-App" target="_blank">
+          <button>View the Android App</button>
+        </a>
+      </div>
+      
+      <div class="product">
+        <img src="images/icon.png" alt="Freetime Maker Shop App Icon" width="150">
+        <h3>Download the Official App for Linux</h3>
+        <p>The Official Linux App is avaible via Snapcraft.io or GitHub</p>
+        <a href="download.fms.linux.html">
+          <button>Download Now via Snapcraft.io or GitHub</button>
+        </a>
+      </div>
+      
+      <div class="product">
+        <img src="images/logo.png" alt="Freetime App Store" width="150">
+        <h3>Download Freetime App Store Android</h3>
+        <p>Download Now</p>
+        <a href="https://github.com/FreetimeMaker/Freetime-App-Store/releases/latest" target="_blank">
+          <button>Download now my own App Store</button>
+        </a>
+      </div>
+
+      <div class="product">
+    <img src="images/don.png" alt="Donation" width="150">
+    <h3>Download Donation Android</h3>
+    <p>Download Now</p>
+    <a href="https://github.com/FreetimeMaker/Donation/releases/latest" target="_blank">
+      <button>Download Now to donate to me even on the Go</button>
+    </a>
+  </div>
+
+  <div class="product">
+    <img src="images/don.png" alt="Donation" width="150">
+    <h3>Download Donation Linux</h3>
+    <p>Download Now</p>
+    <a href="https://snapcraft.io/freetimemaker-don" target="_blank">
+      <button>Download Now to donate to me in an other app</button>
+    </a>
+  </div>
+  
+  <div class="product">
+    <img src="images/logo.png" alt="Logo" width="150">
+    <h3>Buy Tokens from Me</h3>
+    <p>Different Tokens</p>
+    <a href="tokens.html">
+      <button>Buy Tokens now</button>
+    </a>
+  </div>
+  
+  <div class="product">
+      <img src="images/logo.png" alt="Logo" width="150">
+      <h3>Donations</h3>
+      <p>Anything</p>
+      <a href="donations.html">
+        <button>Donate to me</button>
+      </a>
     </div>
-
-    <footer class="bg-dark text-light mt-5 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>DigitalShop</h5>
-                    <p>Ihr Shop für digitale Assets wie Wallpapers, Icons und Templates.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Über uns</a></li>
-                        <li><a href="#" class="text-light">AGB</a></li>
-                        <li><a href="#" class="text-light">Datenschutz</a></li>
-                        <li><a href="#" class="text-light">Impressum</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Newsletter</h5>
-                    <form onsubmit="subscribeNewsletter(event)">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="E-Mail-Adresse" required>
-                            <button class="btn btn-primary" type="submit">Abonnieren</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <hr>
-            <p class="text-center mb-0">&copy; 2026 TechShop. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    
+    <div class="product">
+      <img src="images/logo.png" alt="Logo" width="150">
+      <h3>Support</h3>
+      <p>For Support Only!</p>
+      <a href="support.html">
+        <button>Get Support</button>
+      </a>
+    </div>
+    
+    <div class="product">
+      <img src="images/logo.png"alt="Logo"width="150">
+      <h3>News</h3>
+      <p>Here you can get News about on what I am working</p>
+      <a href="news.html">
+        <button>Click to view the News</button>
+      </a>
+    </div>
+    
+    <div class="product">
+      <img src="images/logo.png" alt="Logo" width="150">
+      <h3>Help me with Sign-Up on these Providers</h3>
+      <p>Do what they say like Sign-Up and complete Tasks for Helping me</p>
+      <a href="help.me.html">
+        <button>Help Me</button>
+      </a>
+    </div>
+    </section>
+  </main>
+  
+  <footer>
+    &copy;  2025 Freetime Maker
+  </footer>
 </body>
 </html>
